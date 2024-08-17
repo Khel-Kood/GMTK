@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://dhkfvj6uepldo"]
+[gd_scene load_steps=3 format=3 uid="uid://dhkfvj6uepldo"]
+
+[ext_resource type="PackedScene" uid="uid://d2xvupcvh7wjt" path="res://Source/Scenes/Actor/Actor.tscn" id="1_7eji0"]
+[ext_resource type="PackedScene" uid="uid://bjl1yfrioub2y" path="res://Source/Scenes/Actor/cards.tscn" id="2_opxvk"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Actor" parent="." instance=ExtResource("1_7eji0")]
+position = Vector2(169, 226)
+
+[node name="Cards" parent="." instance=ExtResource("2_opxvk")]
+position = Vector2(275, 363)
+rotation = -0.148353
+
+[node name="Cards" parent="Cards" instance=ExtResource("2_opxvk")]
+position = Vector2(126.288, 0.673875)
+rotation = 0.0994838
+
+[node name="Cards" parent="Cards/Cards" instance=ExtResource("2_opxvk")]
+position = Vector2(124.9, 5.1074)
+rotation = 0.0994838
+
+[node name="Cards" parent="Cards/Cards/Cards" instance=ExtResource("2_opxvk")]
+position = Vector2(125.703, 4.3158)
+rotation = 0.0994838
