@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjl1yfrioub2y"]
+[gd_scene load_steps=5 format=3 uid="uid://bjl1yfrioub2y"]
 
 [ext_resource type="Texture2D" uid="uid://djn5b81c0oqck" path="res://Source/Scenes/Actor/icon.svg" id="1_4jf1g"]
 [ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/CardBase.gd" id="1_crejr"]
+[ext_resource type="Texture2D" uid="uid://b3a75fvjjrbyb" path="res://Source/Scenes/Actor/Solid_red.svg.png" id="3_fs3fv"]
 [ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/TextureButton.gd" id="3_q3ph3"]
 
 [node name="Cards2" type="Control"]
@@ -17,6 +18,16 @@ layout_mode = 0
 offset_right = 130.0
 offset_bottom = 259.0
 script = ExtResource("3_q3ph3")
+
+[node name="border" type="TextureRect" parent="TextureButton"]
+visible = false
+layout_mode = 0
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 130.0
+offset_bottom = 259.0
+texture = ExtResource("3_fs3fv")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureButton"]
 layout_mode = 0

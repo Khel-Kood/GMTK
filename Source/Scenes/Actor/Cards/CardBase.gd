@@ -7,6 +7,7 @@ class_name Card
 @onready var cardNameLabel = $TextureButton/CardNameLabel
 @onready var cardNumberLabel = $TextureButton/CardNumberLabel
 @onready var texture_button = $TextureButton
+@onready var border = $TextureButton/border
 @export var mana = 0;
 signal cardSelect
 var currentPosition;
@@ -19,6 +20,7 @@ func _ready() -> void:
 
 func selectCard():
     print("called card select")
+    border.visible = true
     cardSelect.emit()
 
 func isSelected() -> bool:
