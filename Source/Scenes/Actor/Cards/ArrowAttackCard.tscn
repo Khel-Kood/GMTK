@@ -3,3 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://bjl1yfrioub2y" path="res://Source/Scenes/Actor/Cards/Cards.tscn" id="1_k0xcs"]
 
 [node name="Cards2" instance=ExtResource("1_k0xcs")]
+mana = null
