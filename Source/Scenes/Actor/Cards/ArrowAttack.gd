@@ -6,7 +6,7 @@ func _ready() -> void:
 	cardNumberLabel = $TextureButton/CardNumberLabel
 
 	# Set the card's name and number
-	setCardName("Fireball")
-	setCardNumber(5)
+	setCardName("Arrow Attack Card")
+	setCardNumber(15)
 
 	# If you have additional setup, handle it here
