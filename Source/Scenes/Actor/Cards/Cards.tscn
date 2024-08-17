@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjl1yfrioub2y"]
+
+[ext_resource type="Texture2D" uid="uid://djn5b81c0oqck" path="res://Source/Scenes/Actor/icon.svg" id="1_4jf1g"]
+[ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/CardBase.gd" id="1_crejr"]
+
+[node name="Cards2" type="Node2D"]
+script = ExtResource("1_crejr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 256.0
+texture = ExtResource("1_4jf1g")
+
+[node name="CardNameLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 19.0
+offset_right = 84.0
+offset_bottom = 42.0
+text = "Attack"
+
+[node name="CardNumberLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 41.0
+offset_right = 43.0
+offset_bottom = 64.0
+text = "50"
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
