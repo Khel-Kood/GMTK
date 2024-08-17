@@ -12,21 +12,19 @@ offset_right = -123.264
 offset_bottom = -253.368
 script = ExtResource("1_crejr")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 259.0
+script = ExtResource("3_q3ph3")
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 256.0
 texture = ExtResource("1_4jf1g")
 
-[node name="CardNameLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 19.0
-offset_right = 84.0
-offset_bottom = 42.0
-text = "Attack"
-
-[node name="CardNumberLabel" type="Label" parent="."]
+[node name="CardNumberLabel" type="Label" parent="TextureButton"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 41.0
@@ -34,8 +32,10 @@ offset_right = 43.0
 offset_bottom = 64.0
 text = "50"
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="CardNameLabel" type="Label" parent="TextureButton"]
 layout_mode = 0
-offset_right = 130.0
-offset_bottom = 259.0
-script = ExtResource("3_q3ph3")
+offset_left = 34.0
+offset_top = 19.0
+offset_right = 84.0
+offset_bottom = 42.0
+text = "Attack"

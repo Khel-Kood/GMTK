@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhkfvj6uepldo"]
 
 [ext_resource type="PackedScene" uid="uid://d2xvupcvh7wjt" path="res://Source/Scenes/Actor/Actor.tscn" id="1_7eji0"]
-[ext_resource type="PackedScene" uid="uid://dk74u5dyx3fgf" path="res://Source/Scenes/Actor/Cards/AttackCard.tscn" id="3_3h4xe"]
+[ext_resource type="PackedScene" uid="uid://hf5cgpfkewv" path="res://Source/Scenes/Actor/Cards/Hand.tscn" id="2_cfgwy"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(-2, 1)
@@ -10,10 +10,7 @@ position = Vector2(-2, 1)
 position = Vector2(169, 226)
 
 [node name="Actor2" parent="." instance=ExtResource("1_7eji0")]
-position = Vector2(1000, 223)
+position = Vector2(930, 228)
 
-[node name="Cards2" parent="." instance=ExtResource("3_3h4xe")]
-offset_left = 432.0
-offset_top = 371.0
-offset_right = 432.0
-offset_bottom = 371.0
+[node name="Hand" parent="." instance=ExtResource("2_cfgwy")]
+position = Vector2(351, 360)
