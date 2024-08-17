@@ -2,8 +2,8 @@ extends "res://Source/Scenes/Actor/Cards/CardBase.gd"
 
 func _ready() -> void:
     # Set the label nodes here
-    cardNameLabel = $Control/CardNameLabel
-    cardNumberLabel = $Control/CardNumberLabel
+    cardNameLabel = $CardNameLabel
+    cardNumberLabel = $CardNumberLabel
 
     # Set the card's name and number
     setCardName("Fireball")

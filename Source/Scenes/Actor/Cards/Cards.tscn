@@ -1,24 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjl1yfrioub2y"]
+[gd_scene load_steps=4 format=3 uid="uid://bjl1yfrioub2y"]
 
 [ext_resource type="Texture2D" uid="uid://djn5b81c0oqck" path="res://Source/Scenes/Actor/icon.svg" id="1_4jf1g"]
 [ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/CardBase.gd" id="1_crejr"]
+[ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/TextureButton.gd" id="3_q3ph3"]
 
-[node name="Cards2" type="Node2D"]
+[node name="Cards2" type="Control"]
+layout_mode = 3
+anchor_right = 0.107
+anchor_bottom = 0.391
+offset_right = -123.264
+offset_bottom = -253.368
 script = ExtResource("1_crejr")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 256.0
 texture = ExtResource("1_4jf1g")
 
-[node name="CardNameLabel" type="Label" parent="Control"]
+[node name="CardNameLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 19.0
@@ -26,7 +26,7 @@ offset_right = 84.0
 offset_bottom = 42.0
 text = "Attack"
 
-[node name="CardNumberLabel" type="Label" parent="Control"]
+[node name="CardNumberLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 41.0
@@ -34,7 +34,8 @@ offset_right = 43.0
 offset_bottom = 64.0
 text = "50"
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 130.0
+offset_bottom = 259.0
+script = ExtResource("3_q3ph3")
