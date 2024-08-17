@@ -39,3 +39,5 @@ offset_top = 19.0
 offset_right = 84.0
 offset_bottom = 42.0
 text = "Attack"
+
+[connection signal="cardSelection" from="TextureButton" to="." method="_on_texture_button_card_selection"]

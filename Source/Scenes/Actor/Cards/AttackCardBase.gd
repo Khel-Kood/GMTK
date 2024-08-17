@@ -1,6 +1,7 @@
 extends "res://Source/Scenes/Actor/Cards/CardBase.gd"
 
 func _ready() -> void:
+    super._ready()
     # Set the label nodes here
     cardNameLabel = $TextureButton/CardNameLabel
     cardNumberLabel = $TextureButton/CardNumberLabel
