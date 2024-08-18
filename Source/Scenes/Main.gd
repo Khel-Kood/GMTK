@@ -1,6 +1,7 @@
 extends Node2D
 
-
+var selected : bool
+#var enemies : 
 # Called when the node enters the scene tree for the first time.
 func _ready():
   var actorScene = preload("res://Source/Scenes/Actor/Actor.tscn")

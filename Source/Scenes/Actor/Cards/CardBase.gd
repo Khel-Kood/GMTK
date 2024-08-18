@@ -10,18 +10,18 @@ extends Control
 var currentPosition;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+  pass
 
 func isSelected() -> bool:
-	return texture_button.isSelected()
+  return texture_button.isSelected()
 
 # Function to set the card name
 func setCardName(newName: String) -> void:
-	cardNameLabel.text = newName
+  cardNameLabel.text = newName
 
 # Function to set the card number
 func setCardNumber(newNumber: int) -> void:
-	cardNumberLabel.text = str(newNumber)
+  cardNumberLabel.text = str(newNumber)
 
 
 # Optional: Function to handle the release of the card
