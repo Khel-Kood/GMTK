@@ -12,6 +12,8 @@ anchor_bottom = 0.391
 offset_right = -123.264
 offset_bottom = -253.368
 script = ExtResource("1_crejr")
+mana = null
+selected = null
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
