@@ -9,7 +9,6 @@ func _ready() -> void:
 
     # Set the card's name and number
     setCardName("Nuclear Bomb")
-    setCardNumber(50)
 
     # If you have additional setup, handle it here
   
