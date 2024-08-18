@@ -37,8 +37,8 @@ func _process(_delta):
       for actor in actors:
         var Collision : Rect2 = actor.sprite_2d.get_rect()
         Collision.position = Collision.position + actor.global_position
-        print(Collision)
+        #print(Collision)
         if(Collision.has_point(mousePos)):
           hand.getSelectedCard().effect(actor)
-          hand.getSelectedCard().deSelect()
+          hand.deSelectAll()
           break
