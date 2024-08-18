@@ -2,6 +2,8 @@ extends Node2D
 
 # Hand reference
 @onready var hand = $Hand
+@onready var manaLabel = $manaLabel
+@onready var endTurn = $endTurn
 
 # all the actors in the scene
 var enemies = []
@@ -21,6 +23,8 @@ func _ready():
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
     add_child(enemy)
+    
+    endTurn.connect("pressed", Callable(self,"newTurn"))
     enemies.append(enemy)
     #pass # Replace with function body.
 
@@ -30,6 +34,7 @@ func _process(_delta):
     # print("Card Selected")
     # print(hand.getSelectedCard())
     #If the card is selected, check if the player has clicked on the enemy
+    manaLabel.text = str(protagonist.curMana)
     if(Input.is_action_just_pressed("left mouse")):
         var mousePos = get_viewport().get_mouse_position()
         print(mousePos)
@@ -46,10 +51,12 @@ func _process(_delta):
                 Collision.position = Collision.position + enemy.global_position
                 #print(Collision)
                 if(Collision.has_point(mousePos)):
+                    var manaUsed = card.mana
+                    protagonist.curMana -= manaUsed
+                    hand.updateAvailableMana(protagonist.curMana)
                     enemy.onCardEffect(card)
                     hand.deleteCard(card)
                     hand.deSelectAll()
-                    newTurn()
                     break
 
 func newTurn():
@@ -57,5 +64,6 @@ func newTurn():
         enemy.newTurn()
     protagonist.newTurn()
     
+    hand.updateAvailableMana(protagonist.curMana)
     hand.drawNewCards()
     hand.showCards()

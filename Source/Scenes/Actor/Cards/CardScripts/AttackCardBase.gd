@@ -9,7 +9,6 @@ func _ready() -> void:
 
     # Set the card's name and number
     setCardName("Attack Card")
-    setCardNumber(5)
 
     # If you have additional setup, handle it here
 

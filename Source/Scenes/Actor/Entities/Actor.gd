@@ -11,6 +11,9 @@ enum Allignment{
 @export var totalHealth : int = 50
 @export var allignment : Allignment = Allignment.Player;
 
+@export var mana: int = 5
+
+var curMana
 signal deadEnemy
 signal deadPlayer
 
@@ -39,7 +42,8 @@ func onCardEffect(card: Card):
 
 func _ready():
   #Taking initial Health; can be changed via reference
-  health = totalHealth
+    health = totalHealth
+    curMana = mana
   #print(health)
   
   #connect with dead Enemy Signal
@@ -63,4 +67,5 @@ func _process(delta):
     label.modulate = Color.CORNFLOWER_BLUE
   
 func newTurn():
+    curMana = mana
     pass

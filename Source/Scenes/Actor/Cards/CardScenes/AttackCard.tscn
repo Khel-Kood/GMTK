@@ -5,3 +5,4 @@
 
 [node name="Cards" instance=ExtResource("1_kxsgv")]
 script = ExtResource("2_djvmf")
+mana = 2

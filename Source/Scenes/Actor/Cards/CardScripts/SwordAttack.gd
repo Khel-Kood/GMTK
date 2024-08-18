@@ -5,9 +5,8 @@ func _ready() -> void:
   super._ready()
   cardNameLabel = $TextureButton/CardNameLabel
   cardNumberLabel = $TextureButton/CardNumberLabel
+  point_damage = 20
 
   # Set the card's name and number
   setCardName("Sword Attack")
-  setCardNumber(20)
-  point_damage = 20
   # If you have additional setup, handle it here
