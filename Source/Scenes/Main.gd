@@ -6,9 +6,9 @@ extends Node2D
 @onready var endTurn = $endTurn
 
 # all the actors in the scene
+var enemies = []
+var protagonist = null
 
-var actors = []
-var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
     var actorScene = preload("res://Source/Scenes/Actor/Entities/Actor.tscn")
@@ -17,8 +17,7 @@ func _ready():
     actorInstance.totalHealth = 60
     actorInstance.position = (Vector2(180, 220))
     add_child(actorInstance)
-    actors.append(actorInstance)
-    player = actorInstance
+    protagonist = actorInstance
     var enemy = actorScene.instantiate()
     enemy.allignment = actorInstance.Allignment.Enemy
     enemy.totalHealth = 60
@@ -27,6 +26,8 @@ func _ready():
     actors.append(enemy)
     
     endTurn.connect("pressed", Callable(self,"newTurn"))
+    enemies.append(enemy)
+    #pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -42,22 +43,28 @@ func _process(_delta):
 
         if(card == null):
             return
-        for actor in actors:
-            var Collision : Rect2 = actor.sprite_2d.get_rect()
-            Collision.position = Collision.position + actor.global_position
-            #print(Collision)
-            if(Collision.has_point(mousePos)):
-                card.effect(actor)
-                var manaUsed = card.mana
-                player.curMana -= manaUsed
-                hand.updateAvailableMana(player.curMana)
-                hand.deleteCard(card)
-                hand.deSelectAll()
-                break
+        if(card.isAreaDamage()):
+            for enemy in enemies:
+                enemy.onCardEffect(card)
+        else:
+            for enemy in enemies:
+                var Collision : Rect2 = enemy.sprite_2d.get_rect()
+                Collision.position = Collision.position + enemy.global_position
+                #print(Collision)
+                if(Collision.has_point(mousePos)):
+                    var manaUsed = card.mana
+                    player.curMana -= manaUsed
+                    hand.updateAvailableMana(player.curMana)
+                    enemy.onCardEffect(card)
+                    hand.deleteCard(card)
+                    hand.deSelectAll()
+                    newTurn()
+                    break
 
 func newTurn():
-    for actor in actors:
-        actor.newTurn()
+    for enemy in enemies:
+        enemy.newTurn()
+    protagonist.newTurn()
     
     hand.updateAvailableMana(player.curMana)
     hand.drawNewCards()
