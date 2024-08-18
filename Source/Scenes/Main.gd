@@ -18,8 +18,10 @@ func _ready():
     actorInstance.position = (Vector2(180, 220))
     add_child(actorInstance)
     protagonist = actorInstance
-    var enemy = actorScene.instantiate()
+    var enemyScene = preload("res://Source/Scenes/Actor/Entities/Enemy.tscn")
+    var enemy = enemyScene.instantiate()
     enemy.allignment = actorInstance.Allignment.Enemy
+    enemy.setProtagonist(protagonist)
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
     add_child(enemy)
