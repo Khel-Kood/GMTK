@@ -22,28 +22,22 @@ func _ready() -> void:
     pass
 
 func selectCard():
-    cardSelect.emit()
-        
-    print("card selected")
-    border.visible = true
-    selected = true;
+  print("called card select")
+  border.visible = true
+  cardSelect.emit()
 
 func isSelected() -> bool:
-    return selected
-
-func deSelect():
-    selected = false;
-    border.visible = false;
+  return texture_button.isSelected()
 
 # Function to set the card name
 func setCardName(newName: String) -> void:
-    cardNameLabel.text = newName
+  cardNameLabel.text = newName
 
 # Function to set the card number
 func setCardNumber(newNumber: int) -> void:
-    cardNumberLabel.text = str(newNumber)
+  cardNumberLabel.text = str(newNumber)
 
 func effect(actor: Actor) -> void:
-    pass
+  pass
 
-    
+  
