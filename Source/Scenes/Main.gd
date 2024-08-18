@@ -32,8 +32,7 @@ func _process(_delta):
     if(Input.is_action_just_pressed("left mouse")):
         var mousePos = get_viewport().get_mouse_position()
         print(mousePos)
-        print(hand)
-        var card = null
+        var card = hand.getSelectedCard()
 
         if(card == null):
             return
