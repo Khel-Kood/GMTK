@@ -14,7 +14,7 @@ class_name Card
 signal cardSelect
 var effectsSelf: bool = false
 var effectsAllEnemies: bool = false
-var damageCycleCount = 0
+var damageCycleCount = 1
 var point_damage = 0;
 var currentPosition;
 # Called when the node enters the scene tree for the first time.

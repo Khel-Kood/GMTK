@@ -41,7 +41,13 @@ func onHurt(damage: int):
 func onCardEffect(card: Card, selfInflicted: bool = false):
     # Add logic for self-afflicted damage once we add cards for that stuff
     var cardEffect = card.effect()
-    activeDamageEffects.append(cardEffect)
+    if (cardEffect[1] <= 0):
+      print("Wierd shit just happened")
+      return
+    elif (cardEffect[1] == 1):
+      self.onHurt(cardEffect[0])
+    else:
+       activeDamageEffects.append(cardEffect)
 
 func _ready():
   #Taking initial Health; can be changed via reference
