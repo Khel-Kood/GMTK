@@ -8,6 +8,9 @@ func _ready() -> void:
     print("Hand Ready")
     createHand()
     showCards();
+    for i in range(InHand.size()):
+        var card = InHand[i]
+        card.connect("cardSelect", Callable(self,"deSelectAll"))
         
 func createHand():
     var tempCard = preload("res://Source/Scenes/Actor/Cards/ArrowAttackCard.tscn")
@@ -27,3 +30,12 @@ func showCards():
         cardInstance.position = Vector2(50 + i * 150, 50)
         add_child(cardInstance)
     
+func _process(delta):
+    pass
+    
+func deSelectAll():
+    print("De Selecting every card")
+    for i in range(InHand.size()):
+        var card = InHand[i]
+        card.deSelect()
+

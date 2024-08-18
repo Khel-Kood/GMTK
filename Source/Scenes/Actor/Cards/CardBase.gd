@@ -6,9 +6,11 @@ class_name Card
 # Reference to the label nodes
 @onready var cardNameLabel = $TextureButton/CardNameLabel
 @onready var cardNumberLabel = $TextureButton/CardNumberLabel
-@onready var texture_button = $TextureButton
 @onready var border = $TextureButton/border
 @export var mana = 0;
+
+@export var selected: bool = false
+
 signal cardSelect
 var point_damage = 0;
 var currentPosition;
@@ -20,12 +22,18 @@ func _ready() -> void:
     pass
 
 func selectCard():
-    print("called card select")
-    border.visible = true
     cardSelect.emit()
+        
+    print("card selected")
+    border.visible = true
+    selected = true;
 
 func isSelected() -> bool:
-    return texture_button.isSelected()
+    return selected
+
+func deSelect():
+    selected = false;
+    border.visible = false;
 
 # Function to set the card name
 func setCardName(newName: String) -> void:
