@@ -21,4 +21,4 @@ totalHealth = 20
 allignment = 1
 
 [node name="Hand" parent="." instance=ExtResource("2_cfgwy")]
-position = Vector2(351, 360)
+position = Vector2(193, 343)
