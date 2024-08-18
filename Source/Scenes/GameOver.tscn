@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://dynhy3pne73f"]
+[gd_scene load_steps=2 format=3 uid="uid://dynhy3pne73f"]
+
+[ext_resource type="Script" path="res://Source/Scenes/GameOver.gd" id="1_w0dji"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_w0dji")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -22,10 +25,10 @@ offset_top = 368.0
 offset_right = 618.0
 offset_bottom = 484.0
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="RetryButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Retry"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="MapButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Map"

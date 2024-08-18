@@ -86,6 +86,7 @@ func newTurn():
     if(protagonist == null):
         get_tree().change_scene_to_file("res://Source/Scenes/GameOver.tscn")
         return
+
     protagonist.newTurn()
     
     hand.updateAvailableMana(protagonist.curMana)
