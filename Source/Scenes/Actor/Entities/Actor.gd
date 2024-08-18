@@ -15,15 +15,19 @@ signal deadEnemy
 signal deadPlayer
 
 var health := totalHealth
+var attack := 1
+var armor := 1
 # This code is O(n^2), if we ever insert more than 10 enemies, we need to change this
 var activeDamageEffects = []
+
+func getAttackMod() -> int:
+    return attack
 
 func enemyDead():
   print("Enemy Died")
   #Delete the entity
   self.queue_free()
   
-
 func onHurt(damage: int):
   health = clampi(health - damage, 0, totalHealth)
   if(health <= 0):
@@ -35,10 +39,18 @@ func onHurt(damage: int):
     else:
       deadPlayer.emit()
     
-func onCardEffect(card: Card, selfInflicted: bool = false):
+func onCardEffect(cardEffect: Effect, selfInflicted: bool = false):
     # Add logic for self-afflicted damage once we add cards for that stuff
-    var cardEffect = card.effect()
-    activeDamageEffects.append(cardEffect)
+    if (cardEffect.getDuration() <= 0):
+      print("Wierd shit just happened")
+      return
+    elif (cardEffect.getDuration() == 1):
+      var pointDamage = cardEffect.getPointDamage()*cardEffect.getAttackMod()
+      var bluntDamage = cardEffect.getBluntDamage()*cardEffect.getAttackMod()
+      self.onHurt(pointDamage)
+      self.onHurt(bluntDamage)
+    else:
+       activeDamageEffects.append(cardEffect)
 
 func _ready():
   #Taking initial Health; can be changed via reference
@@ -70,9 +82,12 @@ func newTurn():
     var length = activeDamageEffects.size()
     for i in range(length):
         var effect = activeDamageEffects[i]
-        onHurt(effect[0])
-        effect[1] -= 1
-        if(effect[1] <= 0):
+        var pointDamage = effect.getPointDamage()*effect.getAttackMod()
+        var bluntDamage = effect.getBluntDamage()*effect.getAttackMod()
+        onHurt(pointDamage)
+        onHurt(bluntDamage)
+        effect.setDuration(effect.getDuration() - 1)
+        if(effect.getDuration() <= 0):
             activeDamageEffects.erase(i)
             i -= 1
             length -= 1

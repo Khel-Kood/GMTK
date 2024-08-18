@@ -37,19 +37,24 @@ func _process(_delta):
 
         if(card == null):
             return
+        var cardEffect = card.effect()
+        cardEffect.updateAttackMod(protagonist.getAttackMod())
         # We are assuming that cards can either effect self or all enemies, both can be false, but both cannot true
         if(card.canSelfEffect()):
-            protagonist.onCardEffect(card, true)
+            protagonist.onCardEffect(cardEffect, true)
         elif(card.isAreaDamage()):
             for enemy in enemies:
-                enemy.onCardEffect(card)
+                enemy.onCardEffect(cardEffect)
         else:
             for enemy in enemies:
                 var Collision : Rect2 = enemy.sprite_2d.get_rect()
                 Collision.position = Collision.position + enemy.global_position
                 #print(Collision)
                 if(Collision.has_point(mousePos)):
-                    enemy.onCardEffect(card)
+                    var manaUsed = card.mana
+                    protagonist.curMana -= manaUsed
+                    hand.updateAvailableMana(protagonist.curMana)
+                    enemy.onCardEffect(cardEffect)
                     hand.deleteCard(card)
                     hand.deSelectAll()
         newTurn()
