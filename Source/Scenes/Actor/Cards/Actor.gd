@@ -59,3 +59,5 @@ func _process(delta):
   else:
     label.modulate = Color.CORNFLOWER_BLUE
   
+func newTurn():
+    pass

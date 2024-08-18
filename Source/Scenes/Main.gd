@@ -44,4 +44,12 @@ func _process(_delta):
                 card.effect(actor)
                 hand.deleteCard(card)
                 hand.deSelectAll()
+                newTurn()
                 break
+
+func newTurn():
+    for actor in actors:
+        actor.newTurn()
+    
+    hand.drawNewCards()
+    hand.showCards()

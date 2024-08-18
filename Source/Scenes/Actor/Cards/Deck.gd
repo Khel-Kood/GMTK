@@ -22,9 +22,9 @@ func addCard(index: int) -> void:
         print("Card index not found")
 
 # Draw cards randomly from the unlocked cards
-func drawCards() -> Array[PackedScene]:
+func drawCards(count: int) -> Array[PackedScene]:
     var InHand: Array[PackedScene] = []
-    var b = (randi() % 4)+2
+    var b = (randi() % 3)+count
     for i in range(b):
         var a = randi() % drawableCards.size()
         InHand.append(drawableCards[a])

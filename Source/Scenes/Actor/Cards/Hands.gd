@@ -16,24 +16,31 @@ func _ready() -> void:
 func createHand():
     print(deck)
     deck.addCard(1)
-    deck.addCard(3)
     deck.addCard(2)
+    deck.addCard(3)
+    deck.addCard(4)
     
-    var cardScenes = deck.drawCards()
+    var cardScenes = deck.drawCards(2)
     for i in range(cardScenes.size()):
         var cardInstance = cardScenes[i].instantiate()
+        add_child(cardInstance)
         InHand.append(cardInstance)
-    
-    
-    
+
 func showCards():
-    print(InHand.size())
     for i in range(InHand.size()):
         print(i)
         var cardInstance = InHand[i]
         cardInstance.position = Vector2(i * 150, 50)
-        add_child(cardInstance)
     
+func drawNewCards():
+    var cardScenes = deck.drawCards(1)
+    
+    for i in range(cardScenes.size()):
+        var cardScene = cardScenes[i]        
+        var cardInstance = cardScene.instantiate()
+        InHand.append(cardInstance)
+        add_child(cardInstance)
+
 func _process(delta):
     pass
 
@@ -55,3 +62,5 @@ func getSelectedCard() -> Card:
         if card.isSelected():
             return card
     return null
+
+
