@@ -12,7 +12,8 @@ class_name Card
 @export var selected: bool = false
 
 signal cardSelect
-var effects_all: bool = false
+var effectsSelf: bool = false
+var effectsAllEnemies: bool = false
 var damageCycleCount = 0
 var point_damage = 0;
 var currentPosition;
@@ -46,7 +47,10 @@ func setCardNumber(newNumber: int) -> void:
     cardNumberLabel.text = str(newNumber)
 
 func isAreaDamage() -> bool:
-    return self.effects_all
+    return self.effectsAllEnemies
+
+func canSelfEffect() -> bool:
+    return self.effectsSelf
 
 func effect() -> Array[int]:
     return [self.point_damage, self.damageCycleCount]

@@ -35,7 +35,8 @@ func onHurt(damage: int):
     else:
       deadPlayer.emit()
     
-func onCardEffect(card: Card):
+func onCardEffect(card: Card, selfInflicted: bool = false):
+    # Add logic for self-afflicted damage once we add cards for that stuff
     var cardEffect = card.effect()
     activeDamageEffects.append(cardEffect)
 
