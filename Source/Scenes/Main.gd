@@ -49,8 +49,7 @@ func _process(_delta):
                     enemy.onCardEffect(card)
                     hand.deleteCard(card)
                     hand.deSelectAll()
-                    newTurn()
-                    break
+        newTurn()
 
 func newTurn():
     for enemy in enemies:

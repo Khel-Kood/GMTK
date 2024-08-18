@@ -13,6 +13,7 @@ class_name Card
 
 signal cardSelect
 var effects_all: bool = false
+var damageCycleCount = 0
 var point_damage = 0;
 var currentPosition;
 # Called when the node enters the scene tree for the first time.
@@ -47,7 +48,7 @@ func setCardNumber(newNumber: int) -> void:
 func isAreaDamage() -> bool:
     return self.effects_all
 
-func effect() -> int:
-    return self.point_damage
+func effect() -> Array[int]:
+    return [self.point_damage, self.damageCycleCount]
 
     
