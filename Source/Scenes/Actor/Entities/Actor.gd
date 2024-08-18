@@ -14,6 +14,7 @@ enum Allignment{
 @export var mana: int = 5
 @export var curMana: int = mana
 
+var alive:int = true
 signal deadEnemy
 signal deadPlayer
 
@@ -22,21 +23,20 @@ var health := totalHealth
 var activeDamageEffects = []
 
 func enemyDead():
-  print("Enemy Died")
-  #Delete the entity
   self.queue_free()
-  
+
+func isAlive() -> bool:
+    return alive
 
 func onHurt(damage: int):
-  health = clampi(health - damage, 0, totalHealth)
-  if(health <= 0):
-    #implement you ded
-    if (allignment == Allignment.Enemy):
-      print("Enemy maar bc")
-      deadEnemy.emit()
-      enemyDead()
-    else:
-      deadPlayer.emit()
+    health = clampi(health - damage, 0, totalHealth)
+    if(health <= 0):
+        #implement you ded
+        alive = false
+        if (allignment == Allignment.Enemy):
+            deadEnemy.emit()
+        else:
+            deadPlayer.emit()
     
 func onCardEffect(card: Card, selfInflicted: bool = false):
     # Add logic for self-afflicted damage once we add cards for that stuff

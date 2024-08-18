@@ -24,6 +24,7 @@ func _ready():
     enemy.setProtagonist(protagonist)
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
+    enemy.connect("deadEnemy", Callable(self,"enemyDied"))
     add_child(enemy)
     
     endTurn.connect("pressed", Callable(self,"newTurn"))
@@ -63,6 +64,12 @@ func _process(_delta):
                     hand.deleteCard(card)
                     hand.deSelectAll()
 
+func enemyDied():
+    for enemy in enemies:
+        if(!enemy.isAlive()):
+            enemies.erase(enemy)
+            enemy.enemyDead()
+
 func newTurn():
     for enemy in enemies:
         enemy.newTurn()
@@ -71,3 +78,6 @@ func newTurn():
     hand.updateAvailableMana(protagonist.curMana)
     hand.drawNewCards()
     hand.showCards()
+    
+    if( enemies.size() == 0):
+        get_tree().change_scene_to_file("res://Source/Scenes/GameOver.tscn")
