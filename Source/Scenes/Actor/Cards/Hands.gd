@@ -32,10 +32,13 @@ func showCards():
     
 func _process(delta):
     pass
-    
+
 func deSelectAll():
     print("De Selecting every card")
     for i in range(InHand.size()):
         var card = InHand[i]
         card.deSelect()
 
+func getSelectedCard() -> Card:
+#   print("Selecting")
+  return InHand[0] #This is just a placeholder, you need to implement this function

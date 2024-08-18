@@ -6,7 +6,7 @@ enum Allignment{
   Player, Enemy
 }
 
-
+@onready var sprite_2d = $Sprite2D
 @onready var label = $Label
 @export var totalHealth : int = 50
 @export var allignment : Allignment = Allignment.Player;
@@ -47,6 +47,9 @@ func _input(event):
   if(event.is_action_pressed("down")):
      #print("down")
      onHurt(5)
+    
+func get_rect() -> Rect2:
+  return sprite_2d.get_rect()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta): 
