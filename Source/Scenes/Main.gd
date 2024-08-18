@@ -18,6 +18,8 @@ func _ready():
     actorInstance.position = (Vector2(180, 220))
     add_child(actorInstance)
     protagonist = actorInstance
+    protagonist.connect("deadPlayer", Callable(self,"protagDied"))
+
     var enemyScene = preload("res://Source/Scenes/Actor/Entities/Enemy.tscn")
     var enemy = enemyScene.instantiate()
     enemy.allignment = actorInstance.Allignment.Enemy
@@ -70,14 +72,24 @@ func enemyDied():
             enemies.erase(enemy)
             enemy.enemyDead()
 
+func protagDied():
+    protagonist = null
+
 func newTurn():
+    if( enemies.size() == 0):
+        get_tree().change_scene_to_file("res://Source/Scenes/Map.tscn")
+        return
+
     for enemy in enemies:
         enemy.newTurn()
+
+    if(protagonist == null):
+        get_tree().change_scene_to_file("res://Source/Scenes/GameOver.tscn")
+        return
     protagonist.newTurn()
     
     hand.updateAvailableMana(protagonist.curMana)
     hand.drawNewCards()
     hand.showCards()
     
-    if( enemies.size() == 0):
-        get_tree().change_scene_to_file("res://Source/Scenes/GameOver.tscn")
+        

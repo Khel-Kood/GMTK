@@ -55,8 +55,6 @@ func _ready():
     curMana = mana
   #print(health)
   
-  #connect with dead Enemy Signal
-  #deadEnemy.connect(enemyDead())
   
 func _input(event):
   #Todo change with signals
