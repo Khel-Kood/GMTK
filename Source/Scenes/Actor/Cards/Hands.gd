@@ -47,6 +47,11 @@ func deSelectAll():
 func getSelectedCard() -> Card:
     for i in range(InHand.size()):
         var card = InHand[i]
-        if card.isSelected:
+        print("--------------")
+        print(card)
+        print(card.isSelected())
+        print(card.cardNameLabel.text)
+        print("--------------")
+        if card.isSelected():
             return card
     return null

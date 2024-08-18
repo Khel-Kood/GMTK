@@ -9,7 +9,7 @@ func _ready() -> void:
   # Set the card's name and number
   setCardName("Sword Attack")
   setCardNumber(20)
-  var point_damage = 20
+  point_damage = 20
   # If you have additional setup, handle it here
   
 func effect(actor: Actor) -> void:

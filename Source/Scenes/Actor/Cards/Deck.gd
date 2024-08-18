@@ -11,6 +11,7 @@ func _ready():
     allCards[1] = preload("res://Source/Scenes/Actor/Cards/ArrowAttackCard.tscn")
     allCards[2] = preload("res://Source/Scenes/Actor/Cards/AttackCard.tscn")
     allCards[3] = preload("res://Source/Scenes/Actor/Cards/SwordAttackCard.tscn")
+    allCards[4] = preload("res://Source/Scenes/Actor/Cards/NuclearBombCard.tscn")
 
 # Unlock a card using its index
 func addCard(index: int) -> void:
