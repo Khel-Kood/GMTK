@@ -4,6 +4,7 @@ class_name Deck
 
 var allCards: Dictionary = {}
 var drawableCards: Array[PackedScene] = []
+var cardsCount = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +13,11 @@ func _ready():
     allCards[2] = preload("res://Source/Scenes/Actor/Cards/CardScenes/AttackCard.tscn")
     allCards[3] = preload("res://Source/Scenes/Actor/Cards/CardScenes/SwordAttackCard.tscn")
     allCards[4] = preload("res://Source/Scenes/Actor/Cards/CardScenes/NuclearBombCard.tscn")
+    
+    cardsCount = 4
 
+func getCardsCount():
+    return cardsCount
 # Unlock a card using its index
 func addCard(index: int) -> void:
     if allCards.has(index):
@@ -20,6 +25,7 @@ func addCard(index: int) -> void:
         drawableCards.append(card)
     else:
         print("Card index not found")
+
 
 # Draw cards randomly from the unlocked cards
 func drawCards(count: int) -> Array[PackedScene]:

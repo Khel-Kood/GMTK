@@ -12,8 +12,8 @@ enum Allignment{
 @export var allignment : Allignment = Allignment.Player;
 
 @export var mana: int = 5
+@export var curMana: int = mana
 
-var curMana
 signal deadEnemy
 signal deadPlayer
 
