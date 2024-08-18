@@ -1,4 +1,4 @@
-extends "res://Source/Scenes/Actor/Cards/CardBase.gd"
+extends "res://Source/Scenes/Actor/Entities/CardBase.gd"
 
 func _ready() -> void:
     super._ready()

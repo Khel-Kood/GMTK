@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjl1yfrioub2y"]
 
-[ext_resource type="Texture2D" uid="uid://djn5b81c0oqck" path="res://Source/Scenes/Actor/icon.svg" id="1_4jf1g"]
-[ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/CardBase.gd" id="1_crejr"]
-[ext_resource type="Texture2D" uid="uid://b3a75fvjjrbyb" path="res://Source/Scenes/Actor/Solid_red.svg.png" id="3_fs3fv"]
-[ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/TextureButton.gd" id="3_q3ph3"]
+[ext_resource type="Script" path="res://Source/Scenes/Actor/Entities/CardBase.gd" id="1_evb0f"]
+[ext_resource type="Script" path="res://Source/Scenes/Actor/Entities/TextureButton.gd" id="2_ux2r1"]
+[ext_resource type="Texture2D" uid="uid://b3a75fvjjrbyb" path="res://Source/Scenes/Actor/Solid_red.svg.png" id="3_hjq2f"]
+[ext_resource type="Texture2D" uid="uid://djn5b81c0oqck" path="res://Source/Scenes/Actor/icon.svg" id="4_tmavf"]
 
 [node name="Cards2" type="Control"]
 layout_mode = 3
@@ -11,13 +11,13 @@ anchor_right = 0.107
 anchor_bottom = 0.391
 offset_right = -123.264
 offset_bottom = -253.368
-script = ExtResource("1_crejr")
+script = ExtResource("1_evb0f")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_right = 130.0
 offset_bottom = 259.0
-script = ExtResource("3_q3ph3")
+script = ExtResource("2_ux2r1")
 
 [node name="border" type="TextureRect" parent="TextureButton"]
 visible = false
@@ -26,14 +26,14 @@ offset_left = -4.0
 offset_top = -3.0
 offset_right = 130.0
 offset_bottom = 259.0
-texture = ExtResource("3_fs3fv")
+texture = ExtResource("3_hjq2f")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureButton"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 256.0
-texture = ExtResource("1_4jf1g")
+texture = ExtResource("4_tmavf")
 
 [node name="CardNumberLabel" type="Label" parent="TextureButton"]
 layout_mode = 0

@@ -8,10 +8,10 @@ var drawableCards: Array[PackedScene] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
     # Add cards to the dictionary with unique indices
-    allCards[1] = preload("res://Source/Scenes/Actor/Cards/ArrowAttackCard.tscn")
-    allCards[2] = preload("res://Source/Scenes/Actor/Cards/AttackCard.tscn")
-    allCards[3] = preload("res://Source/Scenes/Actor/Cards/SwordAttackCard.tscn")
-    allCards[4] = preload("res://Source/Scenes/Actor/Cards/NuclearBombCard.tscn")
+    allCards[1] = preload("res://Source/Scenes/Actor/Cards/CardScenes/ArrowAttackCard.tscn")
+    allCards[2] = preload("res://Source/Scenes/Actor/Cards/CardScenes/AttackCard.tscn")
+    allCards[3] = preload("res://Source/Scenes/Actor/Cards/CardScenes/SwordAttackCard.tscn")
+    allCards[4] = preload("res://Source/Scenes/Actor/Cards/CardScenes/NuclearBombCard.tscn")
 
 # Unlock a card using its index
 func addCard(index: int) -> void:

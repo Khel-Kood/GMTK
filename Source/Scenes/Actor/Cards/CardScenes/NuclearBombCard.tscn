@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://biho2ngcdg3e6"]
+
+[ext_resource type="PackedScene" uid="uid://bjl1yfrioub2y" path="res://Source/Scenes/Actor/Entities/Cards.tscn" id="1_f2dwq"]
+[ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/CardScripts/NuclearBomb.gd" id="2_uww64"]
+
+[node name="Cards2" instance=ExtResource("1_f2dwq")]
+script = ExtResource("2_uww64")
