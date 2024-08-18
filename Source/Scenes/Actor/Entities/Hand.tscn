@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://hf5cgpfkewv"]
 
 [ext_resource type="Script" path="res://Source/Scenes/Actor/Entities/Hands.gd" id="1_xka4v"]
-[ext_resource type="PackedScene" path="res://Source/Scenes/Actor/Entities/Deck.tscn" id="2_hev7v"]
+[ext_resource type="PackedScene" uid="uid://o77bhbuvetq7" path="res://Source/Scenes/Actor/Entities/Deck.tscn" id="2_hev7v"]
 
 [node name="Hand" type="Node2D"]
 script = ExtResource("1_xka4v")
