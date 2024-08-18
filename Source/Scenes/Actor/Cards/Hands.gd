@@ -44,6 +44,10 @@ func deSelectAll():
         card.deSelect()
 
 
+func deleteCard(card: Card):
+    InHand.erase(card)
+    card.queue_free()
+
 func getSelectedCard() -> Card:
     for i in range(InHand.size()):
         var card = InHand[i]
