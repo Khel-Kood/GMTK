@@ -4,7 +4,8 @@ extends Node2D
 @onready var hand = $Hand
 
 # all the actors in the scene
-var actors = []
+var enemies = []
+var protagonist = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,13 +15,13 @@ func _ready():
     actorInstance.totalHealth = 60
     actorInstance.position = (Vector2(180, 220))
     add_child(actorInstance)
-    actors.append(actorInstance)
+    protagonist = actorInstance
     var enemy = actorScene.instantiate()
     enemy.allignment = actorInstance.Allignment.Enemy
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
     add_child(enemy)
-    actors.append(enemy)
+    enemies.append(enemy)
     #pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,20 +37,25 @@ func _process(_delta):
 
         if(card == null):
             return
-        for actor in actors:
-            var Collision : Rect2 = actor.sprite_2d.get_rect()
-            Collision.position = Collision.position + actor.global_position
-            #print(Collision)
-            if(Collision.has_point(mousePos)):
-                card.effect(actor)
-                hand.deleteCard(card)
-                hand.deSelectAll()
-                newTurn()
-                break
+        if(card.isAreaDamage()):
+            for enemy in enemies:
+                enemy.onCardEffect(card)
+        else:
+            for enemy in enemies:
+                var Collision : Rect2 = enemy.sprite_2d.get_rect()
+                Collision.position = Collision.position + enemy.global_position
+                #print(Collision)
+                if(Collision.has_point(mousePos)):
+                    enemy.onCardEffect(card)
+                    hand.deleteCard(card)
+                    hand.deSelectAll()
+                    newTurn()
+                    break
 
 func newTurn():
-    for actor in actors:
-        actor.newTurn()
+    for enemy in enemies:
+        enemy.newTurn()
+    protagonist.newTurn()
     
     hand.drawNewCards()
     hand.showCards()
