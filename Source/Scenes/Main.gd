@@ -33,11 +33,7 @@ func _process(_delta):
       var mousePos = get_viewport().get_mouse_position()
       print(mousePos)
       var card = hand.getSelectedCard()
-      print("---------+++++++++-----")
-      print(card)
-      print(card.isSelected())
-      print(card.cardNameLabel.text)
-      print("------------++++++++--")
+
       if(hand.getSelectedCard() == null):
         return
       for actor in actors:
