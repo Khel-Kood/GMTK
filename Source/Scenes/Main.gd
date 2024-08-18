@@ -23,7 +23,6 @@ func _ready():
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
     add_child(enemy)
-    actors.append(enemy)
     
     endTurn.connect("pressed", Callable(self,"newTurn"))
     enemies.append(enemy)
@@ -35,7 +34,7 @@ func _process(_delta):
     # print("Card Selected")
     # print(hand.getSelectedCard())
     #If the card is selected, check if the player has clicked on the enemy
-    manaLabel.text = str(player.curMana)
+    manaLabel.text = str(protagonist.curMana)
     if(Input.is_action_just_pressed("left mouse")):
         var mousePos = get_viewport().get_mouse_position()
         print(mousePos)
@@ -53,12 +52,11 @@ func _process(_delta):
                 #print(Collision)
                 if(Collision.has_point(mousePos)):
                     var manaUsed = card.mana
-                    player.curMana -= manaUsed
-                    hand.updateAvailableMana(player.curMana)
+                    protagonist.curMana -= manaUsed
+                    hand.updateAvailableMana(protagonist.curMana)
                     enemy.onCardEffect(card)
                     hand.deleteCard(card)
                     hand.deSelectAll()
-                    newTurn()
                     break
 
 func newTurn():
@@ -66,6 +64,6 @@ func newTurn():
         enemy.newTurn()
     protagonist.newTurn()
     
-    hand.updateAvailableMana(player.curMana)
+    hand.updateAvailableMana(protagonist.curMana)
     hand.drawNewCards()
     hand.showCards()
