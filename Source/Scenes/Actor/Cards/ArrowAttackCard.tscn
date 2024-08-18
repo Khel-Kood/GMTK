@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bswg3jbj0lv63"]
+[gd_scene load_steps=3 format=3 uid="uid://bswg3jbj0lv63"]
 
 [ext_resource type="PackedScene" uid="uid://bjl1yfrioub2y" path="res://Source/Scenes/Actor/Cards/Cards.tscn" id="1_k0xcs"]
+[ext_resource type="Script" path="res://Source/Scenes/Actor/Cards/ArrowAttack.gd" id="2_iaxgg"]
 
 [node name="Cards2" instance=ExtResource("1_k0xcs")]
-mana = null
+script = ExtResource("2_iaxgg")
