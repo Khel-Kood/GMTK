@@ -43,7 +43,7 @@ func setCardName(newName: String) -> void:
 func setCardNumber(newNumber: int) -> void:
     cardNumberLabel.text = str(newNumber)
 
-func effect(actor: Actor) -> void:
-    pass
+func effect() -> int:
+    return self.point_damage
 
     

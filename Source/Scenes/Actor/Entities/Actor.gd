@@ -33,6 +33,9 @@ func onHurt(damage: int):
     else:
       deadPlayer.emit()
     
+func onCardEffect(card: Card):
+    var damage = card.effect()
+    self.onHurt(damage)
 
 func _ready():
   #Taking initial Health; can be changed via reference

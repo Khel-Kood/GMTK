@@ -12,7 +12,4 @@ func _ready() -> void:
     setCardNumber(5)
 
     # If you have additional setup, handle it here
-    
-func effect(actor: Actor) -> void:
-    # Decrease the health of the actor.
-    actor.onHurt(point_damage)
+

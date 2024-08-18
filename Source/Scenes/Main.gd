@@ -32,7 +32,8 @@ func _process(_delta):
     if(Input.is_action_just_pressed("left mouse")):
         var mousePos = get_viewport().get_mouse_position()
         print(mousePos)
-        var card = hand.getSelectedCard()
+        print(hand)
+        var card = null
 
         if(card == null):
             return
@@ -41,7 +42,7 @@ func _process(_delta):
             Collision.position = Collision.position + actor.global_position
             #print(Collision)
             if(Collision.has_point(mousePos)):
-                card.effect(actor)
+                actor.onCardEffect(card)
                 hand.deleteCard(card)
                 hand.deSelectAll()
                 newTurn()

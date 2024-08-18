@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://o77bhbuvetq7"]
+[gd_scene load_steps=2 format=3 uid="uid://cqneu60k4b21v"]
 
 [ext_resource type="Script" path="res://Source/Scenes/Actor/Entities/Deck.gd" id="1_7reno"]
 
