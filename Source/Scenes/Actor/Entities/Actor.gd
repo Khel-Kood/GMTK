@@ -18,6 +18,8 @@ signal deadEnemy
 signal deadPlayer
 
 var health := totalHealth
+# This code is O(n^2), if we ever insert more than 10 enemies, we need to change this
+var activeDamageEffects = []
 
 func enemyDead():
   print("Enemy Died")
@@ -36,9 +38,10 @@ func onHurt(damage: int):
     else:
       deadPlayer.emit()
     
-func onCardEffect(card: Card):
-    var damage = card.effect()
-    self.onHurt(damage)
+func onCardEffect(card: Card, selfInflicted: bool = false):
+    # Add logic for self-afflicted damage once we add cards for that stuff
+    var cardEffect = card.effect()
+    activeDamageEffects.append(cardEffect)
 
 func _ready():
   #Taking initial Health; can be changed via reference
@@ -68,4 +71,13 @@ func _process(delta):
   
 func newTurn():
     curMana = mana
-    pass
+    # Update the health of the actor with the active damage effects
+    var length = activeDamageEffects.size()
+    for i in range(length):
+        var effect = activeDamageEffects[i]
+        onHurt(effect[0])
+        effect[1] -= 1
+        if(effect[1] <= 0):
+            activeDamageEffects.erase(i)
+            i -= 1
+            length -= 1

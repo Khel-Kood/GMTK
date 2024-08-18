@@ -42,7 +42,10 @@ func _process(_delta):
 
         if(card == null):
             return
-        if(card.isAreaDamage()):
+        # We are assuming that cards can either effect self or all enemies, both can be false, but both cannot true
+        if(card.canSelfEffect()):
+            protagonist.onCardEffect(card, true)
+        elif(card.isAreaDamage()):
             for enemy in enemies:
                 enemy.onCardEffect(card)
         else:
@@ -57,7 +60,6 @@ func _process(_delta):
                     enemy.onCardEffect(card)
                     hand.deleteCard(card)
                     hand.deSelectAll()
-                    break
 
 func newTurn():
     for enemy in enemies:
