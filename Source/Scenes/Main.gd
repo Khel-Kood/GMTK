@@ -8,15 +8,26 @@ var actors = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    var actorScene = preload("res://Source/Scenes/Actor/Entities/Actor.tscn")
-    var actorInstance = actorScene.instantiate()
-    actorInstance.allignment = actorInstance.Allignment.Player
-    actorInstance.totalHealth = 60
-    actorInstance.position = (Vector2(180, 220))
-    add_child(actorInstance)
-    actors.append(actorInstance)
-    var enemy = actorScene.instantiate()
-    enemy.allignment = actorInstance.Allignment.Enemy
+    if(Global.protagonist == null):
+        var actorScene = preload("res://Source/Scenes/Actor/Entities/Protagonist.tscn")
+        var actorInstance = actorScene.instantiate()
+        actorInstance.allignment = actorInstance.Allignment.Player
+        actorInstance.totalHealth = 60
+        actorInstance.position = Vector2(180, 220)
+        add_child(actorInstance)
+        Global.protagonist = actorInstance
+        Global.protagonist.connect("deadPlayer", Callable(self, "protagDied"))
+    else:
+        if Global.protagonist.get_parent() != self:
+            Global.protagonist.position = Vector2(180, 220)  # Adjust position as needed
+            add_child(Global.protagonist)
+
+    protagonist = Global.protagonist
+    hand = protagonist.getHand()
+    var enemyScene = preload("res://Source/Scenes/Actor/Entities/Enemy.tscn")
+    var enemy = enemyScene.instantiate()
+    enemy.allignment = enemy.Allignment.Enemy
+    enemy.setProtagonist(protagonist)
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
     add_child(enemy)

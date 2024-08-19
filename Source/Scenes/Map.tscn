@@ -22,6 +22,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(241, 0)
 script = ExtResource("1_8embn")
 toBigNodes = [NodePath("../GraphNode3")]
+id = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="BigNodes/GraphNode2"]
 scale = Vector2(0.49, 0.49)
@@ -31,6 +32,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(482, 0)
 script = ExtResource("1_8embn")
 toBigNodes = [NodePath("../GraphNode4")]
+id = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="BigNodes/GraphNode3"]
 scale = Vector2(0.49, 0.49)
@@ -40,6 +42,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(723, 0)
 script = ExtResource("1_8embn")
 toBigNodes = [NodePath("../GraphNode5")]
+id = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="BigNodes/GraphNode4"]
 scale = Vector2(0.49, 0.49)
@@ -49,6 +52,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(964, 0)
 script = ExtResource("1_8embn")
 toBigNodes = [NodePath("../../MidNodes/GraphNode10")]
+id = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="BigNodes/GraphNode5"]
 scale = Vector2(0.49, 0.49)
@@ -69,6 +73,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(127, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode3")]
+id = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode2"]
 scale = Vector2(0.49, 0.49)
@@ -78,6 +83,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(253, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode4")]
+id = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode3"]
 scale = Vector2(0.49, 0.49)
@@ -87,6 +93,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(380, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode5")]
+id = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode4"]
 scale = Vector2(0.49, 0.49)
@@ -96,6 +103,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(506, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode6")]
+id = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode5"]
 scale = Vector2(0.49, 0.49)
@@ -105,6 +113,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(633, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode7")]
+id = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode6"]
 scale = Vector2(0.49, 0.49)
@@ -114,6 +123,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(759, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode8")]
+id = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode7"]
 scale = Vector2(0.49, 0.49)
@@ -123,6 +133,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(886, 0)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode9")]
+id = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode8"]
 scale = Vector2(0.49, 0.49)
@@ -132,6 +143,7 @@ texture = ExtResource("1_yrxc8")
 position = Vector2(1007, 1)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../GraphNode10")]
+id = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode9"]
 scale = Vector2(0.49, 0.49)
@@ -140,6 +152,7 @@ texture = ExtResource("1_yrxc8")
 [node name="GraphNode10" type="Node2D" parent="MidNodes"]
 position = Vector2(1134, 1)
 script = ExtResource("1_8embn")
+id = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode10"]
 scale = Vector2(0.49, 0.49)
@@ -232,6 +245,7 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../../MidNodes/GraphNode"), NodePath("../../MidNodes/GraphNode2")]
 toSmallNodes = [NodePath("../GraphNode9")]
+id = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode8"]
 scale = Vector2(0.49, 0.49)
@@ -242,7 +256,7 @@ position = Vector2(760, -42)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toSmallNodes = [NodePath("../GraphNode10")]
-id = 2
+id = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode9"]
 scale = Vector2(0.49, 0.49)
@@ -254,7 +268,7 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toBigNodes = [NodePath("../../BigNodes/GraphNode")]
 toSmallNodes = [NodePath("../GraphNode11")]
-id = 3
+id = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode10"]
 scale = Vector2(0.49, 0.49)
@@ -265,7 +279,7 @@ position = Vector2(939, -43)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toSmallNodes = [NodePath("../GraphNode12")]
-id = 4
+id = 11
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode11"]
 scale = Vector2(0.49, 0.49)
@@ -276,7 +290,7 @@ position = Vector2(1028, -43)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toSmallNodes = [NodePath("../GraphNode13")]
-id = 5
+id = 12
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode12"]
 scale = Vector2(0.49, 0.49)
@@ -287,7 +301,7 @@ position = Vector2(1117, -42)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toSmallNodes = [NodePath("../GraphNode14")]
-id = 6
+id = 13
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode13"]
 scale = Vector2(0.49, 0.49)
@@ -298,7 +312,7 @@ position = Vector2(1206, -43)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_8embn")
 toMidNodes = [NodePath("../../MidNodes/GraphNode10")]
-id = 7
+id = 14
 
 [node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode14"]
 scale = Vector2(0.49, 0.49)

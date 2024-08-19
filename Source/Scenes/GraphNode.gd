@@ -1,8 +1,8 @@
 extends Node2D
 class_name GNode
 
-enum {
-    Small, 
+enum Size{
+    Small, Mid, Big
 }
 
 var isSelected : bool = false;
