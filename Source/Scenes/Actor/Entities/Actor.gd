@@ -19,8 +19,8 @@ signal deadEnemy
 signal deadPlayer
 
 var health := totalHealth
-var attack := 1
-var armor := 1
+var attack := 1.0
+var armor := 1.0
 # This code is O(n^2), if we ever insert more than 10 enemies, we need to change this
 var activeDamageEffects = []
 
@@ -33,8 +33,8 @@ func enemyDead():
 func isAlive() -> bool:
     return alive
 
-func onHurt(damage: int):
-    damage = damage/armor
+func onHurt(damage: float):
+    damage = int(damage/armor)
     health = clampi(health - damage, 0, totalHealth)
     if(health <= 0):
         #implement you ded

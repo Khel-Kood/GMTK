@@ -2,15 +2,15 @@ extends Node
 
 class_name Effect
 
-var armourMod : int = 1
-var attackMod : int = 1
-var attackMultiplier : int = 1
-var pointDamage : int = 0
-var bluntDamage : int = 0
+var armourMod : float = 1
+var attackMod : float = 1
+var attackMultiplier : float = 1
+var pointDamage : float = 0
+var bluntDamage : float = 0
 var duration : int = 1
 var areaDamage : bool = false
 var selfApplicable : bool = false
-var scaleEffect : int = 1
+var scaleEffect : float = 1
 
 func _ready():
     armourMod = 0
