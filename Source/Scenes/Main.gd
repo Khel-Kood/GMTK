@@ -1,28 +1,36 @@
 extends Node2D
 
 # Hand reference
-@onready var hand = $Hand
 @onready var manaLabel = $manaLabel
 @onready var endTurn = $endTurn
 
 # all the actors in the scene
 var enemies = []
 var protagonist = null
+var hand
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    var actorScene = preload("res://Source/Scenes/Actor/Entities/Actor.tscn")
-    var actorInstance = actorScene.instantiate()
-    actorInstance.allignment = actorInstance.Allignment.Player
-    actorInstance.totalHealth = 60
-    actorInstance.position = (Vector2(180, 220))
-    add_child(actorInstance)
-    protagonist = actorInstance
-    protagonist.connect("deadPlayer", Callable(self,"protagDied"))
+    
+    if(Global.protagonist == null):
+        var actorScene = preload("res://Source/Scenes/Actor/Entities/Protagonist.tscn")
+        var actorInstance = actorScene.instantiate()
+        actorInstance.allignment = actorInstance.Allignment.Player
+        actorInstance.totalHealth = 60
+        actorInstance.position = Vector2(180, 220)
+        add_child(actorInstance)
+        Global.protagonist = actorInstance
+        Global.protagonist.connect("deadPlayer", Callable(self, "protagDied"))
+    else:
+        if Global.protagonist.get_parent() != self:
+            Global.protagonist.position = Vector2(180, 220)  # Adjust position as needed
+            add_child(Global.protagonist)
 
+    protagonist = Global.protagonist
+    hand = protagonist.getHand()
     var enemyScene = preload("res://Source/Scenes/Actor/Entities/Enemy.tscn")
     var enemy = enemyScene.instantiate()
-    enemy.allignment = actorInstance.Allignment.Enemy
+    enemy.allignment = enemy.Allignment.Enemy
     enemy.setProtagonist(protagonist)
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
@@ -77,14 +85,14 @@ func protagDied():
 
 func newTurn():
     if( enemies.size() == 0):
-        get_tree().change_scene_to_file("res://Source/Scenes/Map.tscn")
+        change_scene("res://Source/Scenes/Map.tscn")
         return
 
     for enemy in enemies:
         enemy.newTurn()
 
     if(protagonist == null):
-        get_tree().change_scene_to_file("res://Source/Scenes/GameOver.tscn")
+        change_scene("res://Source/Scenes/GameOver.tscn")
         return
 
     protagonist.newTurn()
@@ -93,4 +101,8 @@ func newTurn():
     hand.drawNewCards()
     hand.showCards()
     
+func change_scene(new_scene_path: String):
+    if Global.protagonist != null:
+        Global.protagonist.get_parent().remove_child(Global.protagonist)
+    get_tree().change_scene_to_file(new_scene_path)
         
