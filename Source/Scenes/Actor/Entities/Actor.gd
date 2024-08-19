@@ -29,6 +29,7 @@ func enemyDead():
   self.queue_free()
   
 func onHurt(damage: int):
+  damage = damage/armor
   health = clampi(health - damage, 0, totalHealth)
   if(health <= 0):
     #implement you ded
@@ -45,12 +46,14 @@ func onCardEffect(cardEffect: Effect, selfInflicted: bool = false):
       print("Wierd shit just happened")
       return
     elif (cardEffect.getDuration() == 1):
-      var pointDamage = cardEffect.getPointDamage()*cardEffect.getAttackMod()
-      var bluntDamage = cardEffect.getBluntDamage()*cardEffect.getAttackMod()
+      var pointDamage = cardEffect.getPointDamage()*cardEffect.getAttackMultiplier()
+      var bluntDamage = cardEffect.getBluntDamage()*cardEffect.getAttackMultiplier()
       self.onHurt(pointDamage)
       self.onHurt(bluntDamage)
     else:
-       activeDamageEffects.append(cardEffect)
+      attack = attack*cardEffect.getAttackMod()
+      armor = armor*cardEffect.getArmourMod()
+      activeDamageEffects.append(cardEffect)
 
 func _ready():
   #Taking initial Health; can be changed via reference
@@ -82,12 +85,14 @@ func newTurn():
     var length = activeDamageEffects.size()
     for i in range(length):
         var effect = activeDamageEffects[i]
-        var pointDamage = effect.getPointDamage()*effect.getAttackMod()
-        var bluntDamage = effect.getBluntDamage()*effect.getAttackMod()
+        var pointDamage = effect.getPointDamage()*effect.getAttackMultiplier()
+        var bluntDamage = effect.getBluntDamage()*effect.getAttackMultiplier()
         onHurt(pointDamage)
         onHurt(bluntDamage)
         effect.setDuration(effect.getDuration() - 1)
         if(effect.getDuration() <= 0):
+            attack = attack/effect.getAttackMod()
+            armor = armor/effect.getArmourMod()
             activeDamageEffects.erase(i)
             i -= 1
             length -= 1

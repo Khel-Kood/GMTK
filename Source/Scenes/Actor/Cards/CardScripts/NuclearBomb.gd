@@ -10,4 +10,8 @@ func _ready() -> void:
     setCardName("Nuclear Bomb")
     setCardNumber(50)
 
+    # Set the card's effects
+    cardEffect = Effect.new()
+    cardEffect.setEffect(1, 1, 1, 20, 20, 100, true, false, 0)
+
     # If you have additional setup, handle it here

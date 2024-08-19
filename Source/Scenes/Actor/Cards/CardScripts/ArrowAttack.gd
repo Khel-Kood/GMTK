@@ -9,4 +9,8 @@ func _ready() -> void:
     setCardName("Arrow Attack Card")
     setCardNumber(15)
 
+    # Set the card's effects
+    cardEffect = Effect.new()
+    cardEffect.setEffect(1, 1, 1, 10, 0, 1, false, false, 0)
+
     # If you have additional setup, handle it here

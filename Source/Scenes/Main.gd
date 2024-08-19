@@ -38,7 +38,7 @@ func _process(_delta):
         if(card == null):
             return
         var cardEffect = card.effect()
-        cardEffect.updateAttackMod(protagonist.getAttackMod())
+        cardEffect.setAttackMultiplier(protagonist.getAttackMod())
         # We are assuming that cards can either effect self or all enemies, both can be false, but both cannot true
         if(card.canSelfEffect()):
             protagonist.onCardEffect(cardEffect, true)

@@ -10,5 +10,9 @@ func _ready() -> void:
     setCardName("Attack Card")
     setCardNumber(5)
 
+    # Set the card's effects
+    cardEffect = Effect.new()
+    cardEffect.setEffect(1, 1, 1, 10, 10, 5, true, false, 0)
+
     # If you have additional setup, handle it here
 

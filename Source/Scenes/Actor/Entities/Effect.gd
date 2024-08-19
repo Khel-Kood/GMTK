@@ -2,14 +2,15 @@ extends Node
 
 class_name Effect
 
-var armourMod : int
-var attackMod : int
-var pointDamage : int
-var bluntDamage : int
-var duration : int
-var areaDamage : bool
-var selfApplicable : bool
-var scaleEffect : int
+var armourMod : int = 1
+var attackMod : int = 1
+var attackMultiplier : int = 1
+var pointDamage : int = 0
+var bluntDamage : int = 0
+var duration : int = 1
+var areaDamage : bool = false
+var selfApplicable : bool = false
+var scaleEffect : int = 1
 
 func _ready():
     armourMod = 0
@@ -24,9 +25,8 @@ func setArmourMod(newArmourMod : int):
 func setAttackMod(newAttackMod : int):
     attackMod = newAttackMod
 
-# Use this function to set the attack mod from protagonist to other cards for modifiying the attack
-func updateAttackMod(updatedAttackMod : int):
-    attackMod = attackMod * updatedAttackMod
+func setAttackMultiplier(newAttackMultiplier : int):
+    attackMultiplier = newAttackMultiplier
 
 func setPointDamage(newPointDamage : int):
     pointDamage = newPointDamage
@@ -46,9 +46,10 @@ func setSelfApplicable(newSelfApplicable : bool):
 func setScaleEffect(newScaleEffect : int):
     scaleEffect = newScaleEffect
 
-func setEffect(newArmourMod : int, newAttackMod : int, newPointDamage : int, newBluntDamage : int, newDuration : int, newAreaDamage : bool, newSelfApplicable : bool, newScaleEffect : int):
+func setEffect(newArmourMod : int, newAttackMod : int, newAttackMultiplier : int, newPointDamage : int, newBluntDamage : int, newDuration : int, newAreaDamage : bool, newSelfApplicable : bool, newScaleEffect : int):
     armourMod = newArmourMod
     attackMod = newAttackMod
+    attackMultiplier = newAttackMultiplier
     pointDamage = newPointDamage
     bluntDamage = newBluntDamage
     duration = newDuration
@@ -61,6 +62,9 @@ func getArmourMod() -> int:
 
 func getAttackMod() -> int:
     return attackMod
+
+func getAttackMultiplier() -> int:
+    return attackMultiplier
 
 func getPointDamage() -> int:
     return pointDamage
@@ -81,4 +85,4 @@ func getScaleEffect() -> int:
     return scaleEffect
 
 func getEffect() -> Array[int]:
-    return [armourMod, attackMod, pointDamage, bluntDamage, duration, areaDamage, selfApplicable, scaleEffect]
+    return [armourMod, attackMod, attackMultiplier, pointDamage, bluntDamage, duration, areaDamage, selfApplicable, scaleEffect]
