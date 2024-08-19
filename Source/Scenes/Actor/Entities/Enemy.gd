@@ -25,7 +25,7 @@ func newTurn():
         print(self.curMana,"curMana cardMana" ,card.getMana())
         if(curMana > card.getMana()):
             curMana-= card.getMana()
-            protagonist.onCardEffect(card)  
+            protagonist.onCardEffect(card.effect())  
         
         card.queue_free()      
     

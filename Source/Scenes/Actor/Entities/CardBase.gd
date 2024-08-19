@@ -56,4 +56,4 @@ func canSelfEffect() -> bool:
     return self.cardEffect.getSelfApplicable()
 
 func effect() -> Effect:
-    return cardEffect
+    return self.cardEffect
