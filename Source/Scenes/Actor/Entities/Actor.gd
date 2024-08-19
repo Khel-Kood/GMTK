@@ -42,6 +42,7 @@ func onHurt(damage: int):
     
 func onCardEffect(cardEffect: Effect, selfInflicted: bool = false):
     # Add logic for self-afflicted damage once we add cards for that stuff
+    print(cardEffect.getEffect())
     if (cardEffect.getDuration() <= 0):
       print("Wierd shit just happened")
       return
