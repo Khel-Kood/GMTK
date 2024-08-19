@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Gmtk"
-run/main_scene="res://Source/Scenes/Map.tscn"
+run/main_scene="res://Source/Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Source/Scenes/Actor/icon.svg"
+
+[autoload]
+
+Global="*res://Source/Global.gd"
 
 [editor]
 

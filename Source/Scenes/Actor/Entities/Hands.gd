@@ -5,13 +5,13 @@ extends Node
 var InHand: Array[Card] = []
 @onready var deck = $Deck
 
+var manaAvailable = 5
+
 func _ready() -> void:
     print("Hand Ready")
     createHand()
     showCards();
-    for i in range(InHand.size()):
-        var card = InHand[i]
-        card.connect("cardSelect", Callable(self,"deSelectAll"))
+    
         
 func createHand():
     print(deck)
@@ -25,6 +25,8 @@ func createHand():
         var cardInstance = cardScenes[i].instantiate()
         add_child(cardInstance)
         InHand.append(cardInstance)
+        cardInstance.connect("cardSelect", Callable(self,"deSelectAll"))
+    
 
 func showCards():
     for i in range(InHand.size()):
@@ -39,10 +41,14 @@ func drawNewCards():
         var cardScene = cardScenes[i]        
         var cardInstance = cardScene.instantiate()
         InHand.append(cardInstance)
+        cardInstance.connect("cardSelect", Callable(self,"deSelectAll"))
         add_child(cardInstance)
 
 func _process(delta):
-    pass
+    var selectedCard: Card = getSelectedCard()
+    if(selectedCard != null):
+        if(manaAvailable < selectedCard.getMana()):
+                deSelectAll()
 
 func deSelectAll():
     print("De Selecting every card")
@@ -54,6 +60,9 @@ func deSelectAll():
 func deleteCard(card: Card):
     InHand.erase(card)
     card.queue_free()
+
+func updateAvailableMana(mana: int):
+    manaAvailable = mana
 
 func getSelectedCard() -> Card:
     for i in range(InHand.size()):
