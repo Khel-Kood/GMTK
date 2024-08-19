@@ -19,19 +19,19 @@ func _ready():
     bluntDamage = 0
     duration = 0
 
-func setArmourMod(newArmourMod : int):
+func setArmourMod(newArmourMod : float):
     armourMod = newArmourMod
 
-func setAttackMod(newAttackMod : int):
+func setAttackMod(newAttackMod : float):
     attackMod = newAttackMod
 
-func setAttackMultiplier(newAttackMultiplier : int):
+func setAttackMultiplier(newAttackMultiplier : float):
     attackMultiplier = newAttackMultiplier
 
-func setPointDamage(newPointDamage : int):
+func setPointDamage(newPointDamage : float):
     pointDamage = newPointDamage
 
-func setBluntDamage(newBluntDamage : int):
+func setBluntDamage(newBluntDamage : float):
     bluntDamage = newBluntDamage
 
 func setDuration(newDuration : int):
@@ -43,7 +43,7 @@ func setAreaDamage(newAreaDamage : bool):
 func setSelfApplicable(newSelfApplicable : bool):
     selfApplicable = newSelfApplicable
 
-func setScaleEffect(newScaleEffect : int):
+func setScaleEffect(newScaleEffect : float):
     scaleEffect = newScaleEffect
 
 func setEffect(newArmourMod : int, newAttackMod : int, newAttackMultiplier : int, newPointDamage : int, newBluntDamage : int, newDuration : int, newAreaDamage : bool, newSelfApplicable : bool, newScaleEffect : int):
@@ -57,19 +57,19 @@ func setEffect(newArmourMod : int, newAttackMod : int, newAttackMultiplier : int
     selfApplicable = newSelfApplicable
     scaleEffect = newScaleEffect
 
-func getArmourMod() -> int:
+func getArmourMod() -> float:
     return armourMod
 
-func getAttackMod() -> int:
+func getAttackMod() -> float:
     return attackMod
 
-func getAttackMultiplier() -> int:
+func getAttackMultiplier() -> float:
     return attackMultiplier
 
-func getPointDamage() -> int:
+func getPointDamage() -> float:
     return pointDamage
 
-func getBluntDamage() -> int:
+func getBluntDamage() -> float:
     return bluntDamage
 
 func getDuration() -> int:
@@ -81,8 +81,8 @@ func getAreaDamage() -> bool:
 func getSelfApplicable() -> bool:
     return selfApplicable
 
-func getScaleEffect() -> int:
+func getScaleEffect() -> float:
     return scaleEffect
 
-func getEffect() -> Array[int]:
+func getEffect() -> Array[float]:
     return [armourMod, attackMod, attackMultiplier, pointDamage, bluntDamage, duration, areaDamage, selfApplicable, scaleEffect]
