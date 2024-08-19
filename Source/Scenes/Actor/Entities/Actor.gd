@@ -11,6 +11,10 @@ enum Allignment{
 @export var totalHealth : int = 50
 @export var allignment : Allignment = Allignment.Player;
 
+@export var mana: int = 5
+@export var curMana: int = mana
+
+var alive:int = true
 signal deadEnemy
 signal deadPlayer
 
@@ -24,21 +28,21 @@ func getAttackMod() -> int:
     return attack
 
 func enemyDead():
-  print("Enemy Died")
-  #Delete the entity
   self.queue_free()
-  
+
+func isAlive() -> bool:
+    return alive
+
 func onHurt(damage: int):
-  damage = damage/armor
-  health = clampi(health - damage, 0, totalHealth)
-  if(health <= 0):
-    #implement you ded
-    if (allignment == Allignment.Enemy):
-      print("Enemy maar bc")
-      deadEnemy.emit()
-      enemyDead()
-    else:
-      deadPlayer.emit()
+    damage = damage/armor
+    health = clampi(health - damage, 0, totalHealth)
+    if(health <= 0):
+        #implement you ded
+        alive = false
+        if (allignment == Allignment.Enemy):
+            deadEnemy.emit()
+        else:
+            deadPlayer.emit()
     
 func onCardEffect(cardEffect: Effect, selfInflicted: bool = false):
     # Add logic for self-afflicted damage once we add cards for that stuff
@@ -58,11 +62,10 @@ func onCardEffect(cardEffect: Effect, selfInflicted: bool = false):
 
 func _ready():
   #Taking initial Health; can be changed via reference
-  health = totalHealth
+    health = totalHealth
+    curMana = mana
   #print(health)
   
-  #connect with dead Enemy Signal
-  #deadEnemy.connect(enemyDead())
   
 func _input(event):
   #Todo change with signals
@@ -82,6 +85,7 @@ func _process(delta):
     label.modulate = Color.CORNFLOWER_BLUE
   
 func newTurn():
+    curMana = mana
     # Update the health of the actor with the active damage effects
     var length = activeDamageEffects.size()
     for i in range(length):

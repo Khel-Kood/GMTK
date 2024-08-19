@@ -8,7 +8,6 @@ func _ready() -> void:
 
     # Set the card's name and number
     setCardName("Nuclear Bomb")
-    setCardNumber(50)
 
     # Set the card's effects
     cardEffect = Effect.new()

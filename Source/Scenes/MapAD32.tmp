@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://jrpxu0p0o25r"]
+
+[ext_resource type="Script" path="res://Source/Scenes/GraphNode.gd" id="1_8embn"]
+[ext_resource type="Script" path="res://Source/Scenes/Map.gd" id="1_h2nft"]
+[ext_resource type="Texture2D" uid="uid://djn5b81c0oqck" path="res://Source/Scenes/Actor/icon.svg" id="1_yrxc8"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_h2nft")
+
+[node name="BigNodes" type="Node2D" parent="."]
+
+[node name="GraphNode" type="Node2D" parent="BigNodes"]
+position = Vector2(173, 258)
+script = ExtResource("1_8embn")
+
+[node name="Sprite2D" type="Sprite2D" parent="BigNodes/GraphNode"]
+position = Vector2(-65, 70)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="MidNodes" type="Node2D" parent="."]
+
+[node name="GraphNode" type="Node2D" parent="MidNodes"]
+position = Vector2(173, 258)
+script = ExtResource("1_8embn")
+
+[node name="Sprite2D" type="Sprite2D" parent="MidNodes/GraphNode"]
+position = Vector2(-65, 70)
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="SmallNodes" type="Node2D" parent="."]
+position = Vector2(75, 607)
+
+[node name="GraphNode" type="Node2D" parent="SmallNodes" node_paths=PackedStringArray("toMidNodes", "toSmallNodes")]
+position = Vector2(47, -42)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+toMidNodes = [NodePath("../../MidNodes/GraphNode")]
+toSmallNodes = [NodePath("../GraphNode2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="GraphNode2" type="Node2D" parent="SmallNodes"]
+position = Vector2(136, -42)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+id = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode2"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="GraphNode3" type="Node2D" parent="SmallNodes"]
+position = Vector2(225, -43)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+id = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode3"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="GraphNode4" type="Node2D" parent="SmallNodes"]
+position = Vector2(315, -43)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+id = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode4"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="GraphNode5" type="Node2D" parent="SmallNodes"]
+position = Vector2(397, -43)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+id = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode5"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="GraphNode6" type="Node2D" parent="SmallNodes"]
+position = Vector2(480, -42)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+id = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode6"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")
+
+[node name="GraphNode7" type="Node2D" parent="SmallNodes"]
+position = Vector2(557, -43)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_8embn")
+id = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallNodes/GraphNode7"]
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("1_yrxc8")

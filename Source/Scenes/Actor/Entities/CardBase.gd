@@ -7,8 +7,8 @@ class_name Card
 @onready var cardNameLabel = $TextureButton/CardNameLabel
 @onready var cardNumberLabel = $TextureButton/CardNumberLabel
 @onready var border = $TextureButton/border
-@export var mana = 0;
 
+@export var mana = 1;
 @export var selected: bool = false
 
 signal cardSelect
@@ -21,7 +21,8 @@ func _ready() -> void:
     for child in get_children():
         if child is TextureButton:
             child.connect("cardSelection", Callable(self, "selectCard"))
-    pass
+            
+    setCardNumber(mana)
 
 func selectCard():
     cardSelect.emit()
@@ -36,6 +37,9 @@ func isSelected() -> bool:
 func deSelect():
     selected = false;
     border.visible = false;
+
+func getMana():
+    return mana
 
 # Function to set the card name
 func setCardName(newName: String) -> void:

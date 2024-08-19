@@ -2,6 +2,8 @@ extends Node2D
 
 # Hand reference
 @onready var hand = $Hand
+@onready var manaLabel = $manaLabel
+@onready var endTurn = $endTurn
 
 # all the actors in the scene
 var enemies = []
@@ -16,11 +18,18 @@ func _ready():
     actorInstance.position = (Vector2(180, 220))
     add_child(actorInstance)
     protagonist = actorInstance
-    var enemy = actorScene.instantiate()
+    protagonist.connect("deadPlayer", Callable(self,"protagDied"))
+
+    var enemyScene = preload("res://Source/Scenes/Actor/Entities/Enemy.tscn")
+    var enemy = enemyScene.instantiate()
     enemy.allignment = actorInstance.Allignment.Enemy
+    enemy.setProtagonist(protagonist)
     enemy.totalHealth = 60
     enemy.position = (Vector2(1000, 220))
+    enemy.connect("deadEnemy", Callable(self,"enemyDied"))
     add_child(enemy)
+    
+    endTurn.connect("pressed", Callable(self,"newTurn"))
     enemies.append(enemy)
     #pass # Replace with function body.
 
@@ -30,6 +39,7 @@ func _process(_delta):
     # print("Card Selected")
     # print(hand.getSelectedCard())
     #If the card is selected, check if the player has clicked on the enemy
+    manaLabel.text = str(protagonist.curMana)
     if(Input.is_action_just_pressed("left mouse")):
         var mousePos = get_viewport().get_mouse_position()
         print(mousePos)
@@ -57,12 +67,32 @@ func _process(_delta):
                     enemy.onCardEffect(cardEffect)
                     hand.deleteCard(card)
                     hand.deSelectAll()
-        newTurn()
+
+func enemyDied():
+    for enemy in enemies:
+        if(!enemy.isAlive()):
+            enemies.erase(enemy)
+            enemy.enemyDead()
+
+func protagDied():
+    protagonist = null
 
 func newTurn():
+    if( enemies.size() == 0):
+        get_tree().change_scene_to_file("res://Source/Scenes/Map.tscn")
+        return
+
     for enemy in enemies:
         enemy.newTurn()
+
+    if(protagonist == null):
+        get_tree().change_scene_to_file("res://Source/Scenes/GameOver.tscn")
+        return
+
     protagonist.newTurn()
     
+    hand.updateAvailableMana(protagonist.curMana)
     hand.drawNewCards()
     hand.showCards()
+    
+        
