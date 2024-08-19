@@ -1,25 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhkfvj6uepldo"]
+[gd_scene load_steps=2 format=3 uid="uid://dhkfvj6uepldo"]
 
-[ext_resource type="PackedScene" uid="uid://ckx8av0qe7qai" path="res://Source/Scenes/Actor/Entities/Actor.tscn" id="1_7eji0"]
 [ext_resource type="Script" path="res://Source/Scenes/Main.gd" id="1_wbg41"]
-[ext_resource type="PackedScene" uid="uid://hf5cgpfkewv" path="res://Source/Scenes/Actor/Entities/Hand.tscn" id="2_cfgwy"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(-2, 1)
 script = ExtResource("1_wbg41")
-
-[node name="Actor" parent="." instance=ExtResource("1_7eji0")]
-visible = false
-position = Vector2(169, 226)
-
-[node name="Actor2" parent="." instance=ExtResource("1_7eji0")]
-visible = false
-position = Vector2(930, 228)
-totalHealth = 20
-allignment = 1
-
-[node name="Hand" parent="." instance=ExtResource("2_cfgwy")]
-position = Vector2(193, 343)
 
 [node name="manaLabel" type="Label" parent="."]
 offset_left = 14.0

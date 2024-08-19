@@ -8,6 +8,7 @@ enum Allignment{
 
 @onready var sprite_2d = $Sprite2D
 @onready var label = $Label
+
 @export var totalHealth : int = 50
 @export var allignment : Allignment = Allignment.Player;
 
@@ -50,6 +51,7 @@ func onCardEffect(card: Card, selfInflicted: bool = false):
        activeDamageEffects.append(cardEffect)
 
 func _ready():
+    print("setting up Actor")
   #Taking initial Health; can be changed via reference
     health = totalHealth
     curMana = mana
